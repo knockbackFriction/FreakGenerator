@@ -1,0 +1,4 @@
+name: freakgenerator
+version: '${version}'
+main: eu.caec.freakgenerator.Main
+load: STARTUP
