@@ -1,5 +1,6 @@
 package eu.caec.freakgenerator;
 
+import eu.caec.freakgenerator.populators.SugarCanePopulator;
 import eu.caec.freakgenerator.populators.ToppingPopulator;
 import eu.caec.freakgenerator.populators.TreePopulator;
 import org.bukkit.*;
@@ -12,6 +13,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class SurfacePopulator extends BlockPopulator {
     TreePopulator treePopulator = new TreePopulator();
     ToppingPopulator toppingPopulator = new ToppingPopulator();
+    SugarCanePopulator sugarCanePopulator = new SugarCanePopulator();
 
     @Override
     public void populate(World world, Random random, Chunk chunk) {
@@ -47,5 +49,6 @@ public class SurfacePopulator extends BlockPopulator {
         }
 
         toppingPopulator.populate(world, chunk, random);
+        sugarCanePopulator.populate(world, chunk, random);
     }
 }

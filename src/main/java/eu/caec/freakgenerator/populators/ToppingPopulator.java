@@ -13,7 +13,6 @@ public class ToppingPopulator {
         for (int X = 0; X < 16; X++) {
             for (int Z = 0; Z < 16; Z++) {
                 b = world.getBiome( chunk.getX()*16 + X, chunk.getZ()*16 + Z );
-
                 int Y;
                 switch (b) {
                     case ICE_PLAINS:

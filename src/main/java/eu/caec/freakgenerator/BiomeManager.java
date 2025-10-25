@@ -9,12 +9,12 @@ public class BiomeManager {
 
     public BiomeManager(int seed){
         temperatureNoise = new FastNoiseLite(seed * 34501);
-        temperatureNoise.SetFrequency(0.001f);
+        temperatureNoise.SetFrequency(0.002f);
         temperatureNoise.SetFractalType(FastNoiseLite.FractalType.FBm);
         temperatureNoise.SetFractalOctaves(4);
 
         humidityNoise = new FastNoiseLite(seed * 48611);
-        humidityNoise.SetFrequency(0.003f);
+        humidityNoise.SetFrequency(0.002f);
         humidityNoise.SetFractalType(FastNoiseLite.FractalType.FBm);
         humidityNoise.SetFractalOctaves(4);
     }

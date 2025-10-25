@@ -2608,5 +2608,4 @@ public class FastNoiseLite
             this.z = z;
         }
     }
-
 }

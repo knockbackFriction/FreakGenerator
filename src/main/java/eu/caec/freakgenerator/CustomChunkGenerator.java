@@ -1,7 +1,6 @@
 package eu.caec.freakgenerator;
 
 import eu.caec.freakgenerator.noise.FastNoiseLite;
-import org.bukkit.Chunk;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
 import org.bukkit.configuration.file.FileConfiguration;
