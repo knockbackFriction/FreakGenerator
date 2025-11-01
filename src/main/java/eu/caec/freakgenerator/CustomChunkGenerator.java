@@ -16,30 +16,41 @@ public class CustomChunkGenerator extends ChunkGenerator {
     int seed = config.getInt("seed");
 
     private final FastNoiseLite terrainNoise = new FastNoiseLite(seed);
+    private final FastNoiseLite detailNoise = new FastNoiseLite(seed * 5393);
 
     public CustomChunkGenerator() {
         // Set frequencies, lower frequency = slower change.
         terrainNoise.SetFrequency(0.001f);
         terrainNoise.SetFractalType(FastNoiseLite.FractalType.FBm);
-        terrainNoise.SetFractalOctaves(8);
+        terrainNoise.SetFractalOctaves(7);
+
+        detailNoise.SetFrequency(0.0035f);
+        detailNoise.SetFractalType(FastNoiseLite.FractalType.FBm);
+        detailNoise.SetFractalOctaves(4);
     }
 
     int currentHeight = 46;
     PillarPlacer pillarPlacer = new PillarPlacer();
-    BiomeManager biomeManager = new BiomeManager(seed);
+    BiomeManager biomeManager = new BiomeManager(seed * 294001);
 
     @Override
     public ChunkData generateChunkData(World world, Random random, int chunkX, int chunkZ, BiomeGrid biome) {
         ChunkData chunk = createChunkData(world);
 
-        Biome pillarBiome = null;
+        Biome pillarBiome;
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
                 float noise1 = terrainNoise.GetNoise(chunkX * 16 + x, chunkZ * 16 + z);
-                currentHeight = 63 + (int)(noise1 * 63);
+                float noise2 = detailNoise.GetNoise(chunkX * 16 + x, chunkZ * 16 + z);
+                currentHeight = 63 + (int)(noise1 * 55);
+
+                if (noise2 > 0.3f) {
+                    currentHeight += (int) ( 63 * (noise2-0.3f) );
+                }
+
                 pillarBiome = biomeManager.getBiome(x, currentHeight, z, chunkX, chunkZ);
-                chunk = pillarPlacer.placePillars(x, currentHeight, z, chunk, pillarBiome);
                 biome.setBiome(x, z, pillarBiome);
+                chunk = pillarPlacer.placePillars(x, currentHeight, z, chunk, pillarBiome);
             }
         }
         return chunk;
