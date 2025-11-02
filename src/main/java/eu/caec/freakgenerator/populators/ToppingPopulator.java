@@ -51,6 +51,7 @@ public class ToppingPopulator {
                                 if (chunk.getBlock(X, Y, Z).getType() == Material.LOG_2) return;
                                 if (chunk.getBlock(X, Y, Z).getType() == Material.LEAVES) return;
                                 if (chunk.getBlock(X, Y, Z).getType() == Material.LEAVES_2) return;
+                                if (chunk.getBlock(X, Y, Z).getType() == Material.VINE) return;
                             }
                             if (random.nextInt(24) == 1) {
                                 if (random.nextBoolean()) {

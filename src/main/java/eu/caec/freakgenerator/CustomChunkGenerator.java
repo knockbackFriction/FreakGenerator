@@ -30,7 +30,7 @@ public class CustomChunkGenerator extends ChunkGenerator {
     }
 
     int currentHeight = 46;
-    PillarPlacer pillarPlacer = new PillarPlacer();
+    PillarPlacer pillarPlacer = new PillarPlacer(seed * 86573);
     BiomeManager biomeManager = new BiomeManager(seed * 294001);
 
     @Override
@@ -50,7 +50,7 @@ public class CustomChunkGenerator extends ChunkGenerator {
 
                 pillarBiome = biomeManager.getBiome(x, currentHeight, z, chunkX, chunkZ);
                 biome.setBiome(x, z, pillarBiome);
-                chunk = pillarPlacer.placePillars(x, currentHeight, z, chunk, pillarBiome);
+                chunk = pillarPlacer.placePillars(x, currentHeight, z, chunk, pillarBiome, chunkX, chunkZ);
             }
         }
         return chunk;
@@ -58,6 +58,6 @@ public class CustomChunkGenerator extends ChunkGenerator {
 
     @Override
     public List<BlockPopulator> getDefaultPopulators(World world) {
-        return Arrays.asList(new SurfacePopulator());
+        return Arrays.asList(new SurfacePopulator()/*, new CaveDigger(seed)*/);
     }
 }
