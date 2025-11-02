@@ -43,7 +43,7 @@ public class BiomeManager {
             if (humidity > 0.0f && temperature < 0.6f && temperature > 0.2f && Y > 56) {
                 return Biome.SWAMPLAND;
             } else {
-                return temperature > -0.67f ? Biome.OCEAN : Biome.FROZEN_OCEAN;
+                return temperature > -0.66f ? Biome.OCEAN : Biome.FROZEN_OCEAN;
             }
         }
     }

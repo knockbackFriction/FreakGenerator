@@ -40,10 +40,10 @@ public class PillarPlacer {
 
             float noise1 = alternateMaterialNoise.GetNoise(chunkX * 16 + X, chunkZ * 16 + Z);
 
-            chunk.setBlock(X, Y, Z, noise1 > 0.4 ? Material.GRAVEL : Material.DIRT);
-            chunk.setBlock(X, Y-1, Z, noise1 > 0.5 ? Material.GRAVEL : Material.DIRT);
-            chunk.setBlock(X, Y-2, Z, noise1 > 0.6 ? Material.GRAVEL : Material.DIRT);
-            chunk.setBlock(X, Y-3, Z, noise1 > 0.7 ? Material.GRAVEL : Material.DIRT);
+            chunk.setBlock(X, Y, Z, noise1 > 0.4f ? Material.GRAVEL : Material.DIRT);
+            chunk.setBlock(X, Y-1, Z, noise1 > 0.46f ? Material.GRAVEL : Material.DIRT);
+            chunk.setBlock(X, Y-2, Z, noise1 > 0.53f ? Material.GRAVEL : Material.DIRT);
+            chunk.setBlock(X, Y-3, Z, noise1 > 0.6f ? Material.GRAVEL : Material.DIRT);
             for (int i = Y-4; i > 0; i--)
                 chunk.setBlock(X, i, Z, Material.STONE);
             chunk.setBlock(X, 0, Z, Material.BEDROCK);
